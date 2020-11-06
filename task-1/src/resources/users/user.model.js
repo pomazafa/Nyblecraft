@@ -32,11 +32,11 @@ module.exports = sequelize.define('User', {
           allowNull: false
         },
         image: {
-            type: DataTypes.BLOB,
+            type: DataTypes.BLOB("long"),
             allowNull: false
         },
         pdf: {
-            type: DataTypes.BLOB,
+            type: DataTypes.BLOB("long"),
         }
       }, {
         sequelize,
