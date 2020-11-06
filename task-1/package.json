@@ -4,7 +4,8 @@
   "description": "node.js, база данных mysql",
   "main": "src/server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/server.js"
   },
   "repository": {
     "type": "git",
@@ -15,5 +16,11 @@
   "bugs": {
     "url": "https://github.com/pomazafa/Nyblecraft/issues"
   },
-  "homepage": "https://github.com/pomazafa/Nyblecraft#readme"
+  "homepage": "https://github.com/pomazafa/Nyblecraft#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mysql2": "^2.2.5",
+    "sequelize": "^6.3.5"
+  }
 }
