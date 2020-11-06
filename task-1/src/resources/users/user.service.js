@@ -5,10 +5,11 @@ const getStream = require('get-stream')
 
 const get = async (req, res) => {
     try{
-        const name = req.params.name;
-        const user = await User.findOne({firstName:name}).then(user => {
+        const name = req.params.firstname;
+        const user = await User.findOne({ where: {firstName:name}}).then(user => {
             return user;
         })
+
         const doc = new PDFDocument();
 
         let filename = `./static/assets/uploads/${user.firstName}_${user.lastName}_${Date.now()}.pdf`;
@@ -19,10 +20,9 @@ const get = async (req, res) => {
         doc.image(user.image, {fit: [500, 400], align: 'center',valign: 'center'});
 
         doc.end();
-        await user.update({pdf:await getStream.buffer(doc)});
-
         res.json({success:true})
-    } catch {
+    } catch (err) {
+        console.error(err);
         res.json({success:false})
     }
 }
