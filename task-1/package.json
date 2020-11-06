@@ -1,0 +1,19 @@
+{
+  "name": "task-1",
+  "version": "1.0.0",
+  "description": "node.js, база данных mysql",
+  "main": "src/server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pomazafa/Nyblecraft.git"
+  },
+  "author": "Polina Duben",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pomazafa/Nyblecraft/issues"
+  },
+  "homepage": "https://github.com/pomazafa/Nyblecraft#readme"
+}
