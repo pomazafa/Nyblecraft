@@ -5,8 +5,6 @@ let sequelize = new Sequelize("", LOGIN, PASSWORD, {
     dialect: "mysql"
   });
 
-// const sequelize = new Sequelize(process.env.CLEARDB_DATABASE_URL || `mysql://${LOGIN}:${PASSWORD}@localhost:3306/${DATABASE}`);
-
 sequelize.query(`CREATE DATABASE IF NOT EXISTS ${DATABASE};`)
 
 sequelize = new Sequelize(process.env.CLEARDB_DATABASE_URL || `mysql://${LOGIN}:${PASSWORD}@localhost:3306/${DATABASE}`);

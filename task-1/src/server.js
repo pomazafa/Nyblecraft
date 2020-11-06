@@ -6,12 +6,9 @@ const bodyparser = require('body-parser')
 const app = express()
 
 app.use(bodyparser.json())
+app.use(bodyparser.urlencoded({ extended: true }))
 
 app.use('/users', userRouter)
-
-app.use(function (err, req, res, next) {
-  res.status(err.status).send(err)
-})
 
 app.listen(PORT, () =>
   console.log(`App is running on http://localhost:${PORT}`)
