@@ -9,6 +9,7 @@ function AddNote({onCreate}) {
 
         if(value.trim()) {
             onCreate(value);
+            setValue('');
         }
     }
 

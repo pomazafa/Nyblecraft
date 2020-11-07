@@ -4,9 +4,9 @@ import Note from './Note';
 
 function NoteList(props) {
     return (
-        <ul>
-            { props.notes.map((note, index) => {
-                return <Note note={note} key={note.id} index={index}></Note>
+        <ul className="notes-list">
+            { props.notes.map((note) => {
+                return <Note note={note} key={note.id}></Note>
             })}
         </ul>
     )

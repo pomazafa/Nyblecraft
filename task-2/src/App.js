@@ -2,20 +2,19 @@ import React from 'react';
 import NoteList from './Note/NoteList';
 import Context from './context';
 import AddNote from './Note/AddNote';
+import data from './data/notes.json';
+import hashtagHelper from './Tag/hashtagHelper';
 
 function App() {
-  const [notes, setNotes] = React.useState([
-    {id: 1, text: "First Note", tags: []},
-    {id: 2, text: "Second #note", tags: []},
-    {id: 3, text: "Third note", tags: []}
-  ]);
+  const [notes, setNotes] = React.useState(data);
 
   function removeNote(id) {
     setNotes(notes.filter(note => note.id !== id));
   }
 
   function addNote(text) {
-    setNotes(notes.concat([{text, id:Date.now()}]));
+    const tags = hashtagHelper(text);
+    setNotes(notes.concat([{text, id:Date.now(), tags: tags}]));
   }
 
   return (
