@@ -6,7 +6,7 @@ function App() {
   const notes = [
     {id: 1, text: "First Note", tags: []},
     {id: 2, text: "Second #note", tags: []},
-    {id: 1, text: "Third note", tags: []}
+    {id: 3, text: "Third note", tags: []}
   ]
 
   return (

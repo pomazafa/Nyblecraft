@@ -1,7 +1,15 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-export default function Note({note}) {
+function Note({note, index}) {
     return (
-        <li>{note.text}</li>
+        <li><strong>{index + 1}</strong>{note.text}</li>
     )
 }
+
+Note.propTypes = {
+    note: PropTypes.object.isRequired,
+    index: PropTypes.number
+}
+
+export default Note;

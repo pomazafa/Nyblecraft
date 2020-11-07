@@ -1,12 +1,19 @@
 import React from 'react';
-import Note from './Note'
+import PropTypes from 'prop-types';
+import Note from './Note';
 
-export default function NodeList(props) {
+function NoteList(props) {
     return (
         <ul>
-            { props.notes.map(note => {
-                return <Note note={note}></Note>
+            { props.notes.map((note, index) => {
+                return <Note note={note} key={note.id} index={index}></Note>
             })}
         </ul>
     )
 }
+
+NoteList.propTypes = {
+    notes: PropTypes.arrayOf(PropTypes.object).isRequired
+}
+
+export default NoteList;
