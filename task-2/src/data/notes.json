@@ -1,5 +1,0 @@
-[
-    {"id": 1, "text": "First Note", "tags": []},
-    {"id": 2, "text": "Second #note", "tags": ["#note"]},
-    {"id": 3, "text": "Third note", "tags": []}
-  ]

@@ -3,7 +3,7 @@ export default function findHashtags(searchText) {
     let result = searchText.match(regexp);
     if (result) {
         result = result.map(function(s){ return s.trim();});
-        return result;
+        return result ? result : [];
     } else {
         return false;
     }
