@@ -20,7 +20,7 @@ function Note({note}) {
                 </div>
             </div>
 
-            {note.tags.length ? <TagList tags={note.tags}></TagList> : ''}
+            {note.tags.length ? <TagList tags={note.tags} noteId={note.id}></TagList> : ''}
 
         </li>
     )

@@ -28,8 +28,19 @@ function App() {
     setNotes(notes.concat([{text, id:Date.now(), tags: tags}]))
   }
 
+  function removeTag(id, tag){
+          setNotes(notes.map(note => {
+            if(note.id === id)
+            {
+              note.text = note.text.slice(0, note.text.indexOf(tag)) + note.text.slice(note.text.indexOf(tag) + 1);
+              note.tags = note.tags.filter((t) => t !== tag);
+            }
+            return note;
+          }));
+  }
+
   return (
-    <Context.Provider value={{removeNote}}>
+    <Context.Provider value={{removeNote, removeTag}}>
       <div className="wrapper">
         <h1>Notes</h1>
         <AddNote onCreate={addNote}/>

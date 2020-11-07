@@ -3,8 +3,8 @@ import deleteIcon from '../public/delete.png';
 import Context from '../context';
 import PropTypes from 'prop-types';
 
-function Tag({tag}) {
-    // const { removeTag } = useContext(Context);
+function Tag({tag, noteId}) {
+    const { removeTag } = useContext(Context);
 
     return (
         <li className="tag">
@@ -12,13 +12,14 @@ function Tag({tag}) {
                 {tag}
             </span>
             &nbsp;
-            <button><img src={deleteIcon} alt="delete" className="icon-mini"></img></button>
+            <button onClick={() => removeTag(noteId, tag)}><img src={deleteIcon} alt="delete" className="icon-mini"></img></button>
         </li>
     )
 }
 
 Tag.propTypes = {
-    tag: PropTypes.string.isRequired
+    tag: PropTypes.string.isRequired,
+    noteId: PropTypes.number
 }
 
 export default Tag;
