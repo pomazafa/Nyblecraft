@@ -39,8 +39,12 @@ function App() {
           }));
   }
 
+  function filterByTag(tag) {
+
+  }
+
   return (
-    <Context.Provider value={{removeNote, removeTag}}>
+    <Context.Provider value={{removeNote, removeTag, filterByTag}}>
       <div className="wrapper">
         <h1>Notes</h1>
         <AddNote onCreate={addNote}/>
