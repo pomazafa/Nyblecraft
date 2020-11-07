@@ -16,7 +16,7 @@ app.post('/api/', (req, res) => {
   res.set('Access-Control-Allow-Origin', '*');
   data = req.body;
   console.log(req.body);
-  fs.writeFileSync('./data/notes.json', JSON.stringify(data.notes));
+  fs.writeFileSync('./data/notes.json', JSON.stringify(data));
   res.status(200).send();
 })
 

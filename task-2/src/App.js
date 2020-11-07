@@ -7,29 +7,38 @@ import axios from 'axios';
 
 function App() {
   const [notes, setNotes] = React.useState(null);
+  const [searchTerm, setSearchTerm] = React.useState("");
+  const [searchResults, setSearchResults] = React.useState(notes);
 
   useEffect(() => {
     fetch('http://localhost:4000/api/')
     .then(response => response.json())
-    .then(notes => setNotes(notes))
+    .then(notes => {
+      setStage(notes)
+    })
   }, []);
 
   useEffect(() => {
     if(notes)
       axios.post('/api/', notes)
   }, [notes]);
+
+  function setStage(value) {
+    setNotes(value);
+    setSearchResults(value);
+  }
   
   function removeNote(id) {
-    setNotes(notes.filter(note => note.id !== id));
+    setStage(notes.filter(note => note.id !== id));
   }
 
   function addNote(text) {
     const tags = hashtagHelper(text);
-    setNotes(notes.concat([{text, id:Date.now(), tags: tags}]))
+    setStage(notes.concat([{text, id:Date.now(), tags: tags}]))
   }
 
   function removeTag(id, tag){
-          setNotes(notes.map(note => {
+          setStage(notes.map(note => {
             if(note.id === id)
             {
               note.text = note.text.slice(0, note.text.indexOf(tag)) + note.text.slice(note.text.indexOf(tag) + 1);
@@ -39,16 +48,20 @@ function App() {
           }));
   }
 
-  function filterByTag(tag) {
-
-  }
+  const handleChange = event => {
+    setSearchTerm(event.target.value);
+  };
+  React.useEffect(() => {
+      const results = searchTerm ? notes.filter(note => note.tags.includes(searchTerm)) : notes;
+      setSearchResults(results);
+    }, [searchTerm, notes]);
 
   return (
-    <Context.Provider value={{removeNote, removeTag, filterByTag}}>
+    <Context.Provider value={{removeNote, removeTag, handleChange, searchTerm}}>
       <div className="wrapper">
         <h1>Notes</h1>
         <AddNote onCreate={addNote}/>
-        {notes && notes.length ? <NoteList notes={notes}></NoteList> : (<p>No notes</p>)}
+        {searchResults && searchResults.length ? <NoteList notes={searchResults}></NoteList> : (<p>No notes</p>)}
       </div>
     </Context.Provider>
   );
