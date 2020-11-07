@@ -14,7 +14,10 @@ function AddNote({onCreate}) {
     }
 
     return (<form className="add-note-form" onSubmit={submitHandler}>
-        <input  value={value} onChange={event => setValue(event.target.value) }/>
+        <textarea value={value} onChange={event => setValue(event.target.value) }></textarea>
+        <br/>
+        <input placeholder="#tag"></input>
+        <br/>
         <button type="submit">Add note</button>
     </form>)
 }
