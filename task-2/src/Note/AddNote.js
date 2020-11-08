@@ -1,9 +1,8 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext } from 'react';
 import Context from '../context';
 import PropTypes from 'prop-types';
 
 function AddNote({onCreate}) {
-    // const [value, setValue] = useState('');
     const { searchTerm, handleChange, textareaValue, setTextareaValue } = useContext(Context);
 
     function submitHandler(event) {
