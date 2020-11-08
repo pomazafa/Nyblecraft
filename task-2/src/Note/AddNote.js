@@ -3,20 +3,20 @@ import Context from '../context';
 import PropTypes from 'prop-types';
 
 function AddNote({onCreate}) {
-    const [value, setValue] = useState('');
-    const { searchTerm, handleChange } = useContext(Context);
+    // const [value, setValue] = useState('');
+    const { searchTerm, handleChange, textareaValue, setTextareaValue } = useContext(Context);
 
     function submitHandler(event) {
         event.preventDefault();
 
-        if(value.trim()) {
-            onCreate(value);
-            setValue('');
+        if(textareaValue.trim()) {
+            onCreate(textareaValue);
+            setTextareaValue('');
         }
     }
 
     return (<form className="add-note-form" onSubmit={submitHandler}>
-        <textarea value={value} onChange={event => setValue(event.target.value) }></textarea>
+        <textarea value={textareaValue} onChange={event => setTextareaValue(event.target.value)}></textarea>
         <br/>
         <input placeholder="#tag" value={searchTerm} onChange={handleChange}></input>
         <br/>

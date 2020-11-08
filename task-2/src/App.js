@@ -9,6 +9,7 @@ function App() {
   const [notes, setNotes] = React.useState(null);
   const [searchTerm, setSearchTerm] = React.useState("");
   const [searchResults, setSearchResults] = React.useState(notes);
+  const [textareaValue, setTextareaValue] = React.useState("");
 
   useEffect(() => {
     fetch('http://localhost:4000/api/')
@@ -30,6 +31,12 @@ function App() {
   
   function removeNote(id) {
     setStage(notes.filter(note => note.id !== id));
+  }
+
+  function changeNote(id) {
+    const note = notes.filter(note => note.id !== id);
+    setTextareaValue(notes.filter(note => note.id === id)[0].text);
+    setStage(note);
   }
 
   function addNote(text) {
@@ -57,7 +64,7 @@ function App() {
     }, [searchTerm, notes]);
 
   return (
-    <Context.Provider value={{removeNote, removeTag, handleChange, searchTerm}}>
+    <Context.Provider value={{removeNote, removeTag, handleChange, searchTerm, changeNote, textareaValue, setTextareaValue}}>
       <div className="wrapper">
         <h1>Notes</h1>
         <AddNote onCreate={addNote}/>

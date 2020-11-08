@@ -6,7 +6,7 @@ import Context from '../context';
 import TagList from '../Tag/TagList';
 
 function Note({note}) {
-    const { removeNote } = useContext(Context);
+    const { removeNote, changeNote } = useContext(Context);
 
     return (
         <li>
@@ -15,7 +15,7 @@ function Note({note}) {
                     {note.text}
                 </span>
                 <div className="buttons-list">
-                    <button><img src={editIcon} alt="edit" className="icon"></img></button>
+                    <button onClick={() => changeNote(note.id)}><img src={editIcon} alt="edit" className="icon"></img></button>
                     <button onClick={() => removeNote(note.id)}><img src={deleteIcon} alt="delete" className="icon"></img></button>
                 </div>
             </div>
